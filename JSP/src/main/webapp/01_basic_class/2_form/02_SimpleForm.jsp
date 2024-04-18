@@ -32,5 +32,8 @@
 		<input type="submit" value='전송'>
 		<input type="reset" value='취소'>
 	</form>
+	
+	<%@ include file="./02_result.jsp" %>
+	
 </body>
 </html>
