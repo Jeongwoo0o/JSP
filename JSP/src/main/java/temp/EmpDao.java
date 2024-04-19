@@ -100,4 +100,49 @@ public class EmpDao {
 		return list;
 	}
 	
+	/*
+ 		함수명 	:
+ 		인자		:
+ 		리턴값	:
+ 		역할		:
+	*/
+	public boolean loginCheck(EmpVO vo) throws Exception {
+		Connection			con 	= null;	
+		Statement 			stmt	= null;
+		PreparedStatement 	ps 		= null;
+		ResultSet 			rs 		= null;
+		boolean 			result	= false;
+		
+		// 1) 연결객체
+		try {
+			con	= DriverManager.getConnection( dbUrl, dbUser, dbPass );
+			
+			// 2) sql 문장
+			String sql = "SELECT * FROM emp  "
+					   + "WHERE ename=? AND empno=?  ";
+			
+			// 3) 전송객체
+			ps = con.prepareStatement( sql );
+			
+			ps.setString(1, vo.getEname());
+			ps.setInt(2, vo.getEmpno());
+			
+			// 4) 전송
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				result = true;
+			} else {
+				result = false;
+			}
+			
+		}finally {
+			if( rs   != null ) { try{ rs.close();  } catch(SQLException ex){} }
+			if( stmt != null ) { try{ stmt.close(); } catch(SQLException ex){} }
+			if( ps   != null ) { try{ ps.close();  } catch(SQLException ex){} }
+			if( con  != null ) { try{ con.close(); } catch(SQLException ex){} }
+		}
+		return result;
+	}
+	
 }
