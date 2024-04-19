@@ -32,7 +32,7 @@
   </li>  
  </ol>
 </fieldset>
-
+<!-- Test -->
 <fieldset>
 <legend>추가정보</legend>
 <ol>
