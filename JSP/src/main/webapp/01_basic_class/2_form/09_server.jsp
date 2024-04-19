@@ -26,7 +26,7 @@ vo.setSal(Integer.parseInt(sal));
 EmpDao dao = EmpDao.getInstance();
 dao.insertEmp(vo);
 %>
-
+<!-- Test -->
 <!DOCTYPE html>
 <html>
 <head>
