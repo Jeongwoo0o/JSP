@@ -8,10 +8,10 @@ public class EmpDao {
 	private static EmpDao  instance;
 	
 	// DB 연결시  관한 변수  
-		private static final String 	dbDriver	=	"com.mysql.cj.jdbc.Driver";
-		private static final String		dbUrl		=	"jdbc:mysql://localhost:3306/basic";
-		private static final String		dbUser		=	"scott";
-		private static final String		dbPass		=	"tiger";
+	private static final String 	dbDriver	=	"com.mysql.cj.jdbc.Driver";
+	private static final String		dbUrl		=	"jdbc:mysql://localhost:3306/basic";
+	private static final String		dbUser		=	"scott";
+	private static final String		dbPass		=	"tiger";
 		
 		
 	private EmpDao() throws Exception {
@@ -72,7 +72,7 @@ public class EmpDao {
 			
 			// 2) sql 문장
 			String sql = "SELECT empno, ename, job, sal, deptno  "
-					   + "FROM emp";
+					   + "FROM emp  ";
 			
 			// 3) 전송객체
 			ps = con.prepareStatement( sql );
