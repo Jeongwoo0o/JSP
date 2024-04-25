@@ -12,6 +12,7 @@
 	WriteArticleService.getInstance().write(rec);  
 	//BoardSave.jsp에서 새로고침을 하게 되면 중복 입력되기에
 	// 추후에 입력 후 BoardView.jsp?id=글번호 로 넘겨서 처리하고자
+	response.sendRedirect("BoardList.jsp");
 %>
 
 

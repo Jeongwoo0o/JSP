@@ -10,7 +10,7 @@ import guest.model.MessageException;
 public class ViewArticleService {
 	
 	private static ViewArticleService instance;
-	public static ViewArticleService getInstance()  throws BoardException{
+	public static ViewArticleService getInstance()  throws BoardException {
 		if( instance == null )
 		{
 			instance = new ViewArticleService();
@@ -18,13 +18,13 @@ public class ViewArticleService {
 		return instance;
 	}
 	
-	public BoardVO getArticleById(String id) throws BoardException
-	{
+	public BoardVO getArticleById(String id) throws BoardException {
 		int article_id = 0;
 		if( id != null ) article_id = Integer.parseInt(id);
 		BoardDao dao = BoardDao.getInstance();
-		BoardVO rec = dao.selectById(article_id);		
 		dao.increaseReadCount(article_id);
+		BoardVO rec = dao.selectById(article_id);		
+		
 		return rec;
 	}
 	

@@ -200,13 +200,25 @@ public class BoardDao
 		BoardVO rec = new BoardVO();
 		
 		try{
-
 			con	= DriverManager.getConnection( dbUrl, dbUser, dbPass );
+			
 			// * sql 문장만들기
+			String sql = "SELECT SEQ, TITLE, WRITER, REGDATE, CONTENT, CNT FROM board_ex  "
+					   + "WHERE SEQ=?  ";
 			// * 전송객체 얻어오기
+			ps = con.prepareStatement( sql );
+			ps.setInt(1, seq);
 			// * 전송하기
+			rs = ps.executeQuery();
 			// * 결과 받아 BoardVO변수 rec에 지정하기
-
+			if(rs.next()) {
+				rec.setSeq(rs.getInt("SEQ"));
+				rec.setTitle(rs.getString("TITLE"));
+				rec.setWriter(rs.getString("WRITER"));
+				rec.setRegdate(rs.getString("REGDATE"));
+				rec.setContent(rs.getString("CONTENT"));
+				rec.setCnt(rs.getInt("CNT"));
+			}
 			
 			return rec;
 		}catch( Exception ex ){
@@ -228,8 +240,15 @@ public class BoardDao
 
 			con	= DriverManager.getConnection( dbUrl, dbUser, dbPass );
 			// * sql 문장만들기
+			String sql = "UPDATE board_ex  "
+					   + "SET CNT = CNT+1  "
+					   + "WHERE SEQ=?  ";
 			// * 전송객체 얻어오기
+			ps = con.prepareStatement( sql );
+			ps.setInt(1, seq);
+			
 			// * 전송하기
+			ps.executeUpdate();
 			
 		}catch( Exception ex ){
 			throw new BoardException("게시판 ) 게시글 볼 때 조회수 증가시 오류  : " + ex.toString() );	
@@ -249,8 +268,16 @@ public class BoardDao
 
 			con	= DriverManager.getConnection( dbUrl, dbUser, dbPass );
 			// * sql 문장만들기
+			String sql = "UPDATE board_ex   "
+					   + "SET TITLE=?, CONTENT=?  "
+					   + "WHERE SEQ=? AND PASS=?  ";
 			// * 전송객체 얻어오기
-
+			ps = con.prepareStatement( sql );
+			ps.setString(1, rec.getTitle());
+			ps.setString(2, rec.getContent());
+			ps.setInt(3, rec.getSeq());
+			ps.setString(4, rec.getPass());
+			
 			return ps.executeUpdate();
 		
 		}catch( Exception ex ){
@@ -274,8 +301,12 @@ public class BoardDao
 			con	= DriverManager.getConnection( dbUrl, dbUser, dbPass );
 		
 			// * sql 문장만들기
+			String sql = "DELETE FROM board_ex WHERE SEQ=? AND PASS=?  ";
 			// * 전송객체 얻어오기
-
+			ps = con.prepareStatement( sql );
+			ps.setInt(1, seq);
+			ps.setString(2, pass);
+			
 			return ps.executeUpdate();
 			
 		}catch( Exception ex ){

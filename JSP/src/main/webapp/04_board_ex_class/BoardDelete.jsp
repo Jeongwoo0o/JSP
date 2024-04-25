@@ -1,11 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="board_ex.model.*,board_ex.service.*" %>
-
+ 
 <%
+	int result =  0;
 	// 1. 삭제할 레코드의 게시글번호와 비밀번호를 넘겨받기
+	String dNum = request.getParameter("dNum");
+	String pass = request.getParameter("password");
 	// 2. Service에 delete() 호출
-	int result =  0; 
+	DeleteArticleService service = DeleteArticleService.getInstance();
+	
+	result = service.delete(dNum, pass);
 %>
 <!DOCTYPE html>
 <html>

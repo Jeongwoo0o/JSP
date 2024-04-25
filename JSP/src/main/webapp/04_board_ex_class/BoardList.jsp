@@ -46,7 +46,7 @@
 		<% for(BoardVO vo : mList) { %>
 			<tr>
 				<td> <%= vo.getSeq() %> </td>
-				<td> <%= vo.getTitle() %> </td>
+				<td> <a href="BoardView.jsp?wNum=<%= vo.getSeq() %>"><%= vo.getTitle() %></a> </td>
 				<td> <%= vo.getWriter() %> </td>
 				<td> <%= vo.getRegdate() %> </td>
 				<td> <%= vo.getCnt() %> </td>
