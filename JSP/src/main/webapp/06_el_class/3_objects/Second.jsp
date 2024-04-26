@@ -7,11 +7,11 @@ pageEncoding="UTF-8"%>
 </head>
 <body>
 
-파라메터 값(전 페이지에서 넘어오는 값) :  <br/> 
+파라메터 값(전 페이지에서 넘어오는 값) :  ${ param.data }<br/> 
 
-세션의 값 :  <br/>
+세션의 값 : ${ sessionScope.login }<br/> 
 
-쿠키의 값 :	 <br/>
+쿠키의 값 : ${ cookie.isFlag.value }<br/>	<!-- cookie는 value 지정 -->
 
 
 <hr>

@@ -26,5 +26,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	 <mappers>
 	 <mapper resource="mybatis/guest/mapper/CommentMapper.xml"/>
 	 <mapper resource="emp_mybatis/EmpMapper.xml"/>
+	 <mapper resource="board_mybatis/BoardMapper.xml"/>
 	 </mappers>
 </configuration>

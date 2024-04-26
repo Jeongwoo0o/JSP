@@ -102,6 +102,7 @@ function isDuplicatedId()
 			</tr>
 		</table>
 	</form>
+	
 </div>
 
 
